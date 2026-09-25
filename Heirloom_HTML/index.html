@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heirloom</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-shell">
+    <header class="hud">
+      <div>
+        <h1>HEIRLOOM</h1>
+        <p id="objective">Escape the cursed family home before dawn.</p>
+      </div>
+
+      <div class="hud-right">
+        <div class="stat">
+          <span class="label">GENERATION</span>
+          <span id="generation">1</span>
+        </div>
+        <div class="stat">
+          <span class="label">TIME TO DAWN</span>
+          <span id="timer">03:00</span>
+        </div>
+        <div class="stat wide">
+          <span class="label">ACTIVE HEIRLOOM</span>
+          <span id="active-heirloom">None</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="game-panel">
+        <canvas id="game" width="960" height="600"></canvas>
+
+        <div id="message-box" class="message hidden">
+          <h2 id="message-title"></h2>
+          <p id="message-text"></p>
+          <button id="message-button">Continue</button>
+        </div>
+
+        <div id="interaction-prompt" class="interaction hidden"></div>
+      </section>
+
+      <aside class="sidebar">
+        <section>
+          <h2>Controls</h2>
+          <p><b>WASD / Arrows</b> Move</p>
+          <p><b>E</b> Interact / Pick up</p>
+          <p><b>Q</b> Use heirloom</p>
+          <p><b>Tab</b> Switch heirloom</p>
+        </section>
+
+        <section>
+          <h2>Inventory</h2>
+          <div id="inventory"></div>
+        </section>
+
+        <section>
+          <h2>Clues</h2>
+          <ul id="clues">
+            <li>The front door will not open.</li>
+            <li>Something upstairs is waiting.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Systems</h2>
+          <p><b>Time:</b> reaches zero → loop resets.</p>
+          <p><b>Inventory:</b> heirlooms change what you can do.</p>
+          <p><b>Environment:</b> puzzles react to time and heirlooms.</p>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <span>COMP 440 — Project 2 Prototype</span>
+      <span>Mysterious • Eerie • Charged</span>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
