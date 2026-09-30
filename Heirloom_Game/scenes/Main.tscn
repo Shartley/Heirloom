@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3]
+[gd_scene load_steps=22 format=3]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id="1"]
 [ext_resource path="res://scripts/time_system.gd" type="Script" id="3"]
@@ -129,7 +129,7 @@ scale = Vector3(0.3,1.2,0.1)
 shape = SubResource("BoxShape_prop")
 
 [node name="MusicBox" type="StaticBody3D" parent="World"]
-position = Vector3(-4,0.7,-9)
+position = Vector3(-4,0.7,-4)
 script = ExtResource("6")
 kind = "heirloom"
 heirloom_name = "Music Box"
@@ -141,7 +141,7 @@ scale = Vector3(0.8,0.45,0.6)
 shape = SubResource("BoxShape_prop")
 
 [node name="PortraitPuzzle" type="StaticBody3D" parent="World"]
-position = Vector3(8,1.4,6)
+position = Vector3(4,1.4,-11)
 script = ExtResource("6")
 kind = "mirror_puzzle"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/PortraitPuzzle"]
@@ -163,15 +163,16 @@ scale = Vector3(1.1,1.1,0.25)
 shape = SubResource("BoxShape_prop")
 
 [node name="AtticDoor" type="StaticBody3D" parent="World"]
-position = Vector3(0,1.7,-12.9)
+position = Vector3(0,1.7,-8)
 script = ExtResource("6")
 kind = "attic_door"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/AtticDoor"]
 mesh = SubResource("BoxMesh_prop")
 material_override = SubResource("Mat_black")
-scale = Vector3(2.2,2.8,0.25)
+scale = Vector3(3.34,2.8,0.25)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/AtticDoor"]
 shape = SubResource("BoxShape_prop")
+scale = Vector3(3.34,2.8,0.25)
 
 [node name="ExitDoor" type="StaticBody3D" parent="World"]
 position = Vector3(0,1.7,12.9)
@@ -185,7 +186,7 @@ scale = Vector3(2.2,2.8,0.25)
 shape = SubResource("BoxShape_prop")
 
 [node name="HiddenKey" type="StaticBody3D" parent="World"]
-position = Vector3(8,0.55,4.8)
+position = Vector3(4,0.55,-10)
 script = ExtResource("7")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/HiddenKey"]
 mesh = SubResource("BoxMesh_prop")
@@ -195,7 +196,7 @@ scale = Vector3(0.45,0.12,0.16)
 shape = SubResource("BoxShape_prop")
 
 [node name="Lore" type="StaticBody3D" parent="World"]
-position = Vector3(5,0.8,-9)
+position = Vector3(5,0.8,4)
 script = ExtResource("6")
 kind = "lore"
 text = "A note reads: 'The melody opens the way above. The mirror reveals the way out.'"
@@ -216,12 +217,15 @@ material_override = SubResource("Mat_white")
 shape = SubResource("CapsuleShape_player")
 [node name="Pivot" type="Node3D" parent="Player"]
 position = Vector3(0,0.8,0)
-[node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
-position = Vector3(0,1.2,4.7)
-rotation_degrees = Vector3(-8,0,0)
+[node name="SpringArm3D" type="SpringArm3D" parent="Player/Pivot"]
+rotation_degrees = Vector3(-15,0,0)
+spring_length = 4.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="Player/Pivot/SpringArm3D"]
 current = true
 fov = 72.0
-[node name="RayCast3D" type="RayCast3D" parent="Player/Pivot/Camera3D"]
+[node name="RayCast3D" type="RayCast3D" parent="Player/Pivot/SpringArm3D/Camera3D"]
 target_position = Vector3(0,0,-7)
 collision_mask = 1
 enabled = true
@@ -285,6 +289,6 @@ text = "THE CURSE IS BROKEN"
 horizontal_alignment = 1
 [node name="Body" type="Label" parent="UI/WinPanel/VBox"]
 theme_override_font_sizes/font_size = 22
-text = "You escaped before dawn. The next generation inherits a home—not the unfinished curse.\n\nPress R after closing this panel by restarting the game from the editor."
+text = "You escaped before dawn. The next generation inherits a home—not the unfinished curse.\n\nPress R to play again."
 horizontal_alignment = 1
 autowrap_mode = 2

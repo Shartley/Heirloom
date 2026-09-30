@@ -4,7 +4,7 @@ extends Node
 var running := true
 
 func _process(delta: float) -> void:
-    if not running:
+    if not running or get_node("/root/Main").paused:
         return
     var multiplier := 1.0
     if state.time_effect == "slow":

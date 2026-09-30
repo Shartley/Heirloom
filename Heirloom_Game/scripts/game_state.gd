@@ -46,3 +46,7 @@ func reset_for_loop() -> void:
     time_effect_changed.emit(time_effect)
     time_remaining_changed.emit(time_remaining)
     loop_restarted.emit(loop_count)
+
+func reset_run() -> void:
+    loop_count = -1
+    reset_for_loop()
