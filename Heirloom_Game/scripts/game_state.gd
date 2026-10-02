@@ -7,7 +7,7 @@ signal loop_restarted(loop_count: int)
 signal game_won
 
 var active_heirloom: String = "None"
-var time_remaining: float = 180.0
+var time_remaining: float = 240.0
 var time_effect: String = "normal"
 var loop_count: int = 0
 var collected_heirlooms: Array[String] = []
