@@ -35,7 +35,7 @@ func reset_for_loop() -> void:
     active_heirloom = "None"
     collected_heirlooms.clear()
     time_effect = "normal"
-    time_remaining = maxf(90.0, 180.0 - loop_count * 10.0)
+    time_remaining = maxf(90.0, 240.0 - loop_count * 10.0)
     puzzle_flags = {
         "mirror_revealed": false,
         "music_box_open": false,
